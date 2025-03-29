@@ -1,40 +1,46 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View, Image } from "react-native";
+import React from "react";
 
-const Serie = ({ nome, ano, diretor, temporadas, capa }) => {
+export default function Serie(props) {
+  const { nome, ano, diretor, temporadas, capa } = props;
+
   return (
     <View style={styles.container}>
-      <Image source={{ uri: capa }} style={styles.imagem} />
-      <View style={styles.info}>
+      <View style={styles.card}>
         <Text style={styles.titulo}>{nome}</Text>
+        <Image source={{ uri: capa }} style={styles.capa} />
         <Text>Ano: {ano}</Text>
-        <Text>Diretor: {diretor}</Text>
         <Text>Temporadas: {temporadas}</Text>
+        <Text>Diretor: {diretor}</Text>
       </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    marginVertical: 10,
-    padding: 10,
-    backgroundColor: '#f9f9f9',
-    borderRadius: 5,
+    padding: 20,
   },
-  imagem: {
-    width: 100,
-    height: 150,
-    marginRight: 10,
+  card: {
+    marginBottom: 20,
+    padding: 20,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    borderWidth: 2,
   },
-  info: {
-    flex: 1,
+  capa: {
+    width: 300,
+    height: 500,
+    borderRadius: 6,
+    marginBottom: 10,
   },
   titulo: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: 600,
+    fontSize: 20,
+    textAlign: "center",
+    marginBottom: 5,
   },
 });
-
-export default Serie;
